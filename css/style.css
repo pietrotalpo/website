@@ -1,0 +1,552 @@
+/* ===== RESET ===== */
+a,abbr,acronym,address,b,big,blockquote,body,center,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,font,form,
+h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,
+strong,sub,sup,tt,u,ul,var { margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; }
+body { line-height:1; }
+ol,ul { list-style:none; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Red Hat Display', Helvetica, Arial, sans-serif;
+  font-size: 14px; color: #1f2937; background-color: #fafbfc;
+  line-height: 1.7em; font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #1e40af; text-decoration: none; }
+a:hover { color: #3b82f6; }
+p { padding-bottom: 1em; }
+p:last-of-type { padding-bottom: 0; }
+strong { font-weight: 700; }
+img { max-width: 100%; height: auto; }
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Red Hat Display', Helvetica, Arial, sans-serif;
+  color: #0d1620; padding-bottom: 10px; line-height: 1.3em; font-weight: 600;
+}
+h1 { font-size: 36px; } h2 { font-size: 28px; } h3 { font-size: 20px; } h4 { font-size: 18px; }
+.blue { color: #1e40af; }
+
+/* ===== HEADER ===== */
+.site-header {
+  background-color: #0d1620;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.header-inner {
+  width: 80%; max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+}
+.logo {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 22px;
+  color: #fff; letter-spacing: -0.3px;
+}
+.logo .logo-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  object-fit: cover; object-position: center;
+  margin-right: 4px; flex-shrink: 0;
+  border: 1px solid #1e40af;
+  box-shadow: 0 1px 4px rgba(13,22,32,0.15);
+}
+.main-nav { display: flex; gap: 28px; align-items: center; }
+.main-nav a {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600; font-size: 14px; color: #fff !important;
+  text-decoration: none; transition: color 300ms ease; letter-spacing: 0.3px;
+}
+.main-nav a:hover { color: #93c5fd !important; }
+.main-nav a.current { color: #93c5fd !important; }
+.main-nav a.nav-cta {
+  background: #1e40af; color: #fff !important;
+  padding: 10px 16px; border-radius: 4px;
+  border: 1px solid #1e40af;
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: all 300ms ease;
+}
+.main-nav a.nav-cta:hover {
+  background: transparent;
+  border-color: rgba(255,255,255,0.5);
+  color: #fff !important;
+}
+.main-nav a.nav-cta svg { flex-shrink: 0; }
+
+.burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
+.burger span { display: block; width: 24px; height: 2px; background: #fff; transition: all 300ms; }
+.burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ===== ANIMATIONS ===== */
+.slide-in-left, .slide-in-right, .slide-in-up {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-in-left { transform: translateX(-60px); }
+.slide-in-right { transform: translateX(60px); }
+.slide-in-up { transform: translateY(40px); }
+.slide-in-left.visible, .slide-in-right.visible, .slide-in-up.visible {
+  opacity: 1; transform: translate(0);
+}
+.slide-in-up:nth-child(1) { transition-delay: 0s; }
+.slide-in-up:nth-child(2) { transition-delay: 0.15s; }
+.slide-in-up:nth-child(3) { transition-delay: 0.3s; }
+.slide-in-up:nth-child(4) { transition-delay: 0.45s; }
+
+/* ===== HERO HOME ===== */
+.hero-home {
+  padding: 7vw 0 8vw; position: relative; color: #fff;
+  overflow: hidden;
+  border-bottom-left-radius: 48px;
+  border-bottom-right-radius: 48px;
+}
+.hero-home::before {
+  content: ''; position: absolute; top: -100px; left: 0; right: 0; bottom: -100px;
+  background-image: linear-gradient(135deg, rgba(5,10,18,0.99) 0%, rgba(13,22,32,0.88) 45%, rgba(13,22,32,0.5) 100%),
+    url('../images/hero-truck.jpg');
+  background-size: cover; background-position: center 70%;
+  z-index: 0;
+  transform: translateY(var(--parallax-y, 0));
+  will-change: transform;
+}
+.hero-home .row { width: 80%; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-home .hero-title { text-align: center; margin-bottom: 50px; }
+.hero-home .hero-title h1 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600; font-size: 64px; line-height: 1.15em; color: #fff; padding: 0;
+  max-width: 1100px; margin: 0 auto; letter-spacing: 0.3px;
+}
+.hero-home .hero-columns { display: flex; gap: 5.5%; align-items: flex-start; }
+.hero-home .hero-text-col { flex: 0 0 47.25%; }
+.hero-home .hero-text-col p {
+  font-size: 22px; line-height: 1.7em; color: #e5e7eb;
+  padding-bottom: 1em;
+}
+.hero-home .hero-form-col { flex: 0 0 47.25%; }
+.hero-form {
+  background: #ffffff; border-radius: 10px; padding: 28px 28px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+.hero-form h3.form-title {
+  font-family: 'Red Hat Display', sans-serif; font-weight: 700;
+  color: #0d1620 !important; text-align: center; font-size: 22px;
+  margin-bottom: 18px; padding: 0;
+}
+.hero-form .form-row-half { display: flex; gap: 3%; margin-bottom: 12px; }
+.hero-form .form-row-half input { flex: 1; }
+.hero-form input, .hero-form textarea {
+  width: 100%; padding: 12px 16px; border: 1px solid #e5e7eb;
+  border-radius: 6px; font-family: 'Red Hat Display', sans-serif; font-size: 14px;
+  margin-bottom: 12px; background: #f9fafb; color: #0d1620;
+}
+.hero-form input:focus, .hero-form textarea:focus {
+  outline: none; border-color: #1e40af; background: #fff;
+}
+.hero-form textarea { height: 100px; resize: vertical; }
+.btn-primary {
+  display: inline-block; padding: 14px 32px;
+  border: 2px solid #1e40af; background: #1e40af; color: #fff;
+  border-radius: 6px; cursor: pointer; width: 100%;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700; font-size: 14px; letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 300ms ease;
+}
+.btn-primary:hover {
+  background: transparent; color: #1e40af;
+  box-shadow: 0 10px 20px -5px rgba(30,64,175,0.25);
+}
+
+/* ===== SECTION: SERVIZI BLURBS ===== */
+.servizi-blurbs { padding: 60px 0 40px; background: #fafbfc; }
+.servizi-blurbs .section-inner { width: 80%; max-width: 1280px; margin: 0 auto; }
+.servizi-blurbs h2 { text-align: center; font-size: 34px; padding-bottom: 16px; }
+.servizi-blurbs .lead { text-align: center; color: #6b7280; font-size: 17px; max-width: 700px; margin: 0 auto 40px; }
+.blurb-row { display: flex; gap: 4%; }
+.blurb {
+  flex: 1; text-align: center;
+  background: #ffffff; border-radius: 10px; padding: 38px 28px;
+  box-shadow: 0 2px 30px rgba(15,23,42,0.06);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.blurb:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(30,64,175,0.12);
+  border-color: #c7d2fe;
+}
+.blurb-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(30,64,175,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px; color: #1e40af;
+}
+.blurb-icon i[data-lucide] { width: 28px; height: 28px; }
+.blurb h3 { font-size: 20px; padding-bottom: 12px; }
+.blurb p { font-size: 15px; color: #6b7280; line-height: 1.7em; padding: 0; }
+
+/* ===== CTA BUTTON CENTER ===== */
+.cta-center { text-align: center; padding: 30px 0 60px; }
+.btn-cta {
+  display: inline-block; padding: 14px 36px;
+  background: #1e40af; color: #fff; border: 2px solid #1e40af;
+  border-radius: 4px;
+  font-family: 'Red Hat Display', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.btn-cta:hover {
+  background: transparent; color: #1e40af;
+  box-shadow: 0 10px 20px -5px rgba(30,64,175,0.25);
+}
+
+/* ===== SECTION: AFFIDATE (solution-section) ===== */
+.solution-section { padding: 70px 0; background: #f1f4f8; }
+.solution-row {
+  width: 80%; max-width: 1280px; margin: 0 auto;
+  display: flex; gap: 6%; align-items: center;
+}
+.solution-img { flex: 0 0 47%; }
+.solution-img img { width: 100%; border-radius: 10px; box-shadow: 0 10px 40px rgba(15,23,42,0.12); }
+.solution-text { flex: 1; }
+.solution-text h2 { font-size: 32px; line-height: 1.3em; padding-bottom: 18px; }
+.solution-text p { font-size: 16px; line-height: 1.8em; color: #1f2937; padding-bottom: 1em; }
+
+/* ===== SECTION: ESPERIENZA (2x2 grid) ===== */
+.experience-section { padding: 80px 0 40px; background: #fafbfc; }
+.experience-inner { width: 80%; max-width: 1280px; margin: 0 auto; }
+.experience-section h2 { text-align: center; font-size: 34px; padding-bottom: 40px; }
+.experience-conclusion {
+  text-align: center; max-width: 880px; margin: 56px auto 0;
+  font-size: 24px; line-height: 1.55em; color: #0d1620;
+  font-weight: 500; padding: 0; letter-spacing: -0.2px;
+}
+.experience-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;
+  max-width: 1080px; margin: 0 auto;
+}
+.experience-item {
+  background: #ffffff; padding: 32px 30px; border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.experience-item .exp-icon {
+  flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px;
+  background: rgba(30,64,175,0.1); color: #1e40af;
+  display: flex; align-items: center; justify-content: center;
+}
+.experience-item .exp-icon i[data-lucide] { width: 24px; height: 24px; }
+.experience-item h3 { font-size: 18px; padding-bottom: 6px; }
+.experience-item p { font-size: 15px; color: #6b7280; line-height: 1.7em; padding: 0; }
+
+/* ===== CLIENTS STRIP ===== */
+.clients-section { padding: 60px 0 80px; background: #fafbfc; }
+.clients-section h2 {
+  text-align: center; font-size: 22px; font-weight: 600;
+  color: #6b7280; text-transform: uppercase; letter-spacing: 4px;
+  padding-bottom: 40px;
+}
+.clients-row {
+  width: 80%; max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.client-logo {
+  height: 100px;
+  background: #ffffff; border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px 22px;
+  font-family: 'Red Hat Display', sans-serif; font-weight: 700;
+  font-size: 15px; color: #6b7280;
+  letter-spacing: 1px; text-transform: uppercase;
+  filter: grayscale(100%);
+  opacity: 0.75;
+  transition: filter 0.3s, opacity 0.3s, color 0.3s, border-color 0.3s;
+}
+.client-logo img {
+  max-height: 60px; max-width: 160px;
+  width: auto; height: auto;
+  object-fit: contain; display: block;
+  filter: brightness(0) opacity(0.55);
+  transition: filter 0.3s, opacity 0.3s;
+}
+.client-logo:hover {
+  filter: grayscale(0%); opacity: 1;
+  color: #1e40af; border-color: #c7d2fe;
+}
+.client-logo:hover img {
+  filter: brightness(0) opacity(0.85);
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600; font-size: 56px; line-height: 1.15em;
+  text-align: center; color: #0d1620; letter-spacing: 0.5px;
+  padding-bottom: 0; margin-top: 50px; margin-bottom: 24px;
+}
+.page-subtitle {
+  text-align: center; color: #6b7280; font-size: 18px;
+  max-width: 760px; margin: 0 auto 50px; line-height: 1.7em;
+}
+
+/* ===== CHI SONO ===== */
+.chisono-section { padding: 40px 0 60px; }
+.chisono-inner { width: 80%; max-width: 920px; margin: 0 auto; }
+.chisono-avatar {
+  display: block;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  object-fit: cover; object-position: center;
+  margin: 0 auto 50px;
+  border: 2px solid #1e40af;
+  box-shadow: 0 10px 36px rgba(13,22,32,0.14);
+}
+.chisono-body { font-size: 17px; line-height: 1.9em; color: #1f2937; }
+.chisono-body p { padding-bottom: 1.2em; }
+.chisono-body .callout {
+  background: #f1f4f8; border-left: 4px solid #1e40af;
+  padding: 24px 28px; margin: 30px 0;
+  font-size: 18px; line-height: 1.7em;
+}
+.chisono-image {
+  width: 100%; height: 320px; object-fit: cover; object-position: center;
+  border-radius: 12px; margin: 36px 0;
+  box-shadow: 0 10px 40px rgba(15,23,42,0.12);
+}
+.sectors-section { padding: 50px 0 90px; background: #f1f4f8; }
+.sectors-inner { width: 80%; max-width: 1280px; margin: 0 auto; }
+.sectors-section h2 { text-align: center; font-size: 34px; padding-bottom: 50px; }
+.sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.sector-card {
+  background: #ffffff; padding: 36px 28px; border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+.sector-icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  background: rgba(30,64,175,0.1); color: #1e40af;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.sector-icon i[data-lucide] { width: 28px; height: 28px; }
+.sector-card h3 { font-size: 20px; padding-bottom: 14px; color: #0d1620; }
+.sector-card p { font-size: 15px; color: #4b5563; line-height: 1.75em; padding: 0; }
+
+/* ===== SERVIZI PAGE ===== */
+.servizi-section { padding: 40px 0 100px; }
+.servizi-grid {
+  width: 80%; max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+.s-card {
+  background-color: #ffffff; border-radius: 10px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.s-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(30,64,175,0.12);
+  border-color: #c7d2fe;
+}
+.s-card-header {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  padding: 36px 24px 4px; text-align: center;
+}
+.s-card-icon {
+  display: flex; width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(30,64,175,0.1); color: #1e40af;
+  align-items: center; justify-content: center;
+}
+.s-card-icon i[data-lucide] { width: 30px; height: 30px; }
+.s-card h3 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600; line-height: 1.3em; font-size: 22px;
+  padding: 0; color: #0d1620; letter-spacing: 0.3px;
+}
+.s-card-chevron { display: none; }
+.s-card-body {
+  display: block; padding: 16px 28px 32px; text-align: center;
+}
+.s-card-body p { font-size: 15px; line-height: 1.75em; color: #4b5563; padding: 0; }
+
+/* ===== CONTATTI ===== */
+.contatti-intro-section { padding: 0 0 40px; }
+.contatti-intro-inner { width: 80%; max-width: 820px; margin: 0 auto; }
+.contatti-intro-inner p {
+  font-size: 17px; line-height: 1.8em; color: #4b5563;
+  text-align: center;
+}
+.contatti-cards-section { padding: 30px 0 80px; }
+.contatti-cards-row {
+  width: 80%; max-width: 1280px; margin: 0 auto;
+  display: flex; gap: 30px;
+}
+.c-info-card {
+  flex: 1; background: #ffffff; border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 36px 28px; text-align: center;
+}
+.c-info-card .c-icon-wrap {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+  background: rgba(30,64,175,0.1); color: #1e40af;
+}
+.c-icon-wrap i[data-lucide] { width: 28px; height: 28px; }
+.c-info-card h3 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600; font-size: 22px; padding-bottom: 14px; color: #0d1620; letter-spacing: 0.3px;
+}
+.c-info-card p { font-size: 15px; color: #4b5563; line-height: 1.75em; padding: 0; }
+.c-info-card a { color: #1e40af; }
+.c-info-card a:hover { color: #3b82f6; }
+
+.contatti-form-section { padding: 30px 0 70px; background: #f1f4f8; }
+.contatti-form-inner { width: 80%; max-width: 720px; margin: 0 auto; }
+.contatti-form-inner h2 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600; font-size: 38px; line-height: 1.2em; letter-spacing: 0.3px;
+  text-align: center; padding-bottom: 36px;
+}
+.cf-row { display: flex; gap: 16px; margin-bottom: 16px; }
+.cf-row.full { display: block; margin-bottom: 16px; }
+.cf-row input, .cf-row textarea {
+  flex: 1; width: 100%; padding: 14px 18px;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 15px; line-height: 1.7em;
+  border: 1px solid #e5e7eb; background-color: #ffffff;
+  border-radius: 6px; color: #0d1620;
+}
+.cf-row textarea { height: 130px; resize: vertical; }
+.cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: #1e40af; }
+.cf-submit-wrap { text-align: center; margin-top: 26px; }
+.btn-submit {
+  display: inline-block; padding: 14px 44px; cursor: pointer;
+  background-color: #1e40af; color: #fff;
+  border: 2px solid #1e40af;
+  border-radius: 6px; letter-spacing: 2px;
+  font-size: 13px; text-transform: uppercase;
+  font-family: 'Red Hat Display', sans-serif; font-weight: 700;
+  transition: all 300ms ease;
+}
+.btn-submit:hover {
+  background-color: transparent; color: #1e40af;
+  box-shadow: 0 10px 20px -5px rgba(30,64,175,0.25);
+}
+.map-fullwidth { width: 100%; }
+.map-fullwidth iframe { width: 100%; height: 480px; border: 0; display: block; }
+
+.dove-section { padding: 70px 0 40px; background: #fafbfc; text-align: center; }
+.dove-section .dove-inner { width: 80%; max-width: 1280px; margin: 0 auto; }
+.dove-section h2 { font-size: 32px; padding-bottom: 12px; }
+.dove-section p { color: #6b7280; font-size: 17px; padding: 0; }
+
+/* ===== FOOTER ===== */
+.site-footer { background: #0d1620; color: #9ca3af; padding: 64px 0 36px; }
+.footer-inner {
+  width: 80%; max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
+}
+.footer-brand .footer-logo {
+  font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 24px;
+  color: #fff; display: flex; align-items: center; gap: 6px;
+  margin-bottom: 16px; letter-spacing: -0.3px;
+}
+.footer-brand .footer-logo .footer-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  object-fit: cover; object-position: center;
+  margin-right: 4px; flex-shrink: 0;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+.footer-brand p { font-size: 14px; line-height: 1.7em; color: #9ca3af; padding-bottom: 12px; }
+.social-links { display: flex; gap: 10px; margin-top: 12px; }
+.social-links a {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); display: flex; align-items: center;
+  justify-content: center; color: #fff;
+  transition: background 0.3s, color 0.3s;
+}
+.social-links a i[data-lucide] { width: 16px; height: 16px; }
+.social-links a:hover { background: #1e40af; color: #fff; }
+.footer-col h4 {
+  font-family: 'Red Hat Display', sans-serif; font-weight: 600;
+  font-size: 16px; color: #fff; margin-bottom: 16px; padding: 0;
+  letter-spacing: 0.3px;
+}
+.footer-col p, .footer-col li, .footer-col a {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 14px; line-height: 1.9; color: #9ca3af;
+}
+.footer-col a { transition: color 0.3s; }
+.footer-col a:hover { color: #93c5fd; }
+.footer-bottom {
+  width: 80%; max-width: 1280px; margin: 30px auto 0;
+  padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: #6b7280;
+}
+
+/* ===== FORM THANK YOU ===== */
+.form-thanks {
+  color: #1e40af; font-size: 16px; font-weight: 600;
+  text-align: center; padding: 14px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 980px) {
+  .hero-home { padding: 100px 0 22vw; }
+  .hero-home .hero-title h1 { font-size: 36px; }
+  .hero-home .hero-columns { flex-direction: column; }
+  .hero-home .hero-text-col, .hero-home .hero-form-col { flex: auto; width: 100%; }
+  .hero-home::before { background-size: cover; background-position: center; }
+  .page-title { font-size: 36px; }
+  .solution-row { flex-direction: column; }
+  .solution-img, .solution-text { flex: auto; width: 100%; }
+  .blurb-row { flex-direction: column; gap: 24px; }
+  .experience-grid { grid-template-columns: 1fr; }
+  .sectors-grid { grid-template-columns: 1fr; }
+  .clients-row { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  /* Servizi grid -> accordion */
+  .servizi-grid { display: flex; flex-direction: column; gap: 12px; max-width: 600px; }
+  .s-card { cursor: pointer; }
+  .s-card-header { flex-direction: row; padding: 18px 22px; text-align: left; gap: 16px; }
+  .s-card-icon { width: 48px; height: 48px; min-width: 48px; }
+  .s-card-icon i[data-lucide] { width: 22px; height: 22px; }
+  .s-card-chevron { display: flex; align-items: center; flex-shrink: 0; color: #9ca3af; transition: transform 300ms; margin-left: auto; }
+  .s-card-chevron i[data-lucide] { width: 20px; height: 20px; }
+  .s-card.open .s-card-chevron { transform: rotate(180deg); color: #1e40af; }
+  .s-card-body { max-height: 0; overflow: hidden; padding: 0 22px 0 86px; text-align: left; transition: max-height 0.3s ease, padding 0.3s ease; }
+  .s-card.open .s-card-body { max-height: 500px; padding: 0 22px 22px 86px; }
+  .contatti-cards-row { flex-direction: column; gap: 20px; }
+  .footer-inner { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .header-inner { width: 92%; padding: 14px 0; }
+  .burger { display: flex; }
+  .main-nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: #0d1620; flex-direction: column; gap: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3); padding: 0;
+  }
+  .main-nav.open { display: flex; }
+  .main-nav a { padding: 16px 30px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 15px; }
+  .main-nav a.nav-cta {
+    background: transparent;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 4px;
+    margin: 14px 24px;
+    padding: 14px 18px;
+    justify-content: center;
+    display: inline-flex;
+  }
+}
+@media (max-width: 767px) {
+  .hero-home .hero-title h1 { font-size: 28px; }
+  .page-title { font-size: 28px; }
+  .contatti-form-inner h2 { font-size: 24px; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .cf-row { flex-direction: column; }
+  .map-fullwidth iframe { height: 360px; }
+}
