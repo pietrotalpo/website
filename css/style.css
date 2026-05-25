@@ -102,7 +102,7 @@ h1 { font-size: 36px; } h2 { font-size: 28px; } h3 { font-size: 20px; } h4 { fon
 .hero-home::before {
   content: ''; position: absolute; top: -100px; left: 0; right: 0; bottom: -100px;
   background-image: linear-gradient(135deg, rgba(5,10,18,0.99) 0%, rgba(13,22,32,0.88) 45%, rgba(13,22,32,0.5) 100%),
-    url('../images/hero-truck.jpg');
+    url('../images/hero-containers.jpg');
   background-size: cover; background-position: center 70%;
   z-index: 0;
   transform: translateY(var(--parallax-y, 0));

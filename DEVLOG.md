@@ -1,5 +1,20 @@
 # DEVLOG – Sito Pietro Talpo
 
+## 2026-05-25 — Cambio hero image
+
+**Stato attuale:** `main`.
+
+**Cosa è stato fatto:**
+- Sostituita l'immagine hero da `hero-truck.jpg` a `hero-containers.jpg` (più rappresentativa del lavoro doganale)
+- Aggiornato `css/style.css` (background del banner hero homepage)
+- Aggiornata `<img>` nella solution-section di `index.html` con nuovo `alt` ("Container in attesa di sdoganamento")
+- Aggiornati i meta `og:image` di `index.html`, `servizi.html`, `contatti.html`
+- File originale `hero-truck.jpg` mantenuto in `images/` per ora (non rimosso, in caso di rollback)
+
+**Decisioni chiave:**
+- Immagine container coerente con preferenza del cliente di hero neutro senza foto personale
+- Riusato il file già presente in `/pTalpo/hero-containers.jpg`, copiato in `website/images/`
+
 ## 2026-05-18 — Setup repo e prima consegna
 
 **Stato attuale:** `main`, primo commit.
