@@ -5,15 +5,14 @@
 **Stato attuale:** `main`.
 
 **Cosa è stato fatto:**
-- Sostituita l'immagine hero da `hero-truck.jpg` a `hero-containers.jpg` (più rappresentativa del lavoro doganale)
-- Aggiornato `css/style.css` (background del banner hero homepage)
-- Aggiornata `<img>` nella solution-section di `index.html` con nuovo `alt` ("Container in attesa di sdoganamento")
-- Aggiornati i meta `og:image` di `index.html`, `servizi.html`, `contatti.html`
-- File originale `hero-truck.jpg` mantenuto in `images/` per ora (non rimosso, in caso di rollback)
+- Sostituito lo sfondo dell'hero in homepage da `hero-truck.jpg` a `hero-containers.jpg` (CSS `.hero-home::before`)
+- Aggiornati i meta `og:image` di `index.html`, `servizi.html`, `contatti.html` con la nuova immagine
+- File `hero-truck.jpg` mantenuto e ancora usato nella solution-section di `index.html` (sezione "Affidate le pratiche..."): il camion lì funziona da contrasto visivo con il professionista descritto nel testo
 
 **Decisioni chiave:**
 - Immagine container coerente con preferenza del cliente di hero neutro senza foto personale
 - Riusato il file già presente in `/pTalpo/hero-containers.jpg`, copiato in `website/images/`
+- Una sola immagine cambiata, non due: la solution-section continua a usare il camion perché la sua narrativa visiva ("non affidate al trasportatore") richiama proprio quel mezzo
 
 ## 2026-05-18 — Setup repo e prima consegna
 
