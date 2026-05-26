@@ -1,5 +1,26 @@
 # DEVLOG – Sito Pietro Talpo
 
+## 2026-05-26 — P.IVA, Cookie Policy, Privacy Policy
+
+**Stato attuale:** `main`.
+
+**Cosa è stato fatto:**
+- Aggiunti gli script Cookiebot (Google Consent Mode v2 + main banner) in `<head>` di tutte e 4 le pagine esistenti (`index.html`, `chi-sono.html`, `servizi.html`, `contatti.html`)
+- Creato `cookie-policy.html` con script `CookieDeclaration` per la tabella dei cookie generata dinamicamente da Cookiebot
+- Creato `privacy-policy.html` con script Usercentrics Privacy Policy Generator (`data-language="it"`)
+- Sostituito il placeholder `P.IVA — Cookie Policy — Privacy` nei footer di tutte e 6 le pagine con la P.IVA reale `05301070289` + link funzionanti a `cookie-policy.html` e `privacy-policy.html`
+- `noindex,follow` su entrambe le pagine legali (standard SEO per pagine non rilevanti per le ricerche)
+
+**Decisioni chiave:**
+- Cookie banner + Consent Mode v2 in head di TUTTE le pagine: il banner deve apparire ovunque l'utente atterri
+- CookieDeclaration script SOLO in `cookie-policy.html`: è il widget che renderizza la tabella dei cookie nel posto giusto del DOM
+- Usercentrics PPG SOLO in `privacy-policy.html`: come sopra, renderizza il testo della policy in-place
+- Per visualizzare il contenuto generato da Cookiebot/Usercentrics serve un dominio HTTP/HTTPS reale registrato nei rispettivi pannelli: da `file://` non funziona
+
+**Cosa serve dopo il deploy:**
+- Aggiungere `pietrotalpo.com` (e/o il dominio `*.netlify.app` se serve testing pre-DNS) come trusted domain nel pannello Cookiebot
+- Verificare che la privacy policy Usercentrics renderizzi in italiano
+
 ## 2026-05-25 — Cambio hero image
 
 **Stato attuale:** `main`.
