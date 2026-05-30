@@ -1,5 +1,20 @@
 # DEVLOG – Sito Pietro Talpo
 
+## 2026-05-30 — Sostituito Cookiebot+Usercentrics con Iubenda
+
+**Stato attuale:** `main`.
+
+**Cosa è stato fatto:**
+- Rimossi dal `<head>` di tutte e 4 le pagine: Google Consent Mode v2 inline + Cookiebot main script
+- Eliminate le pagine `cookie-policy.html` e `privacy-policy.html` (non più necessarie: Iubenda usa link modali)
+- Aggiunto nel `<head>` di tutte e 4 le pagine: Iubenda Privacy Controls and Cookie Solution (`embeds.iubenda.com/widgets/38a01fcd-724c-468f-b7a3-390e4511e3a0.js`)
+- Sostituiti i link footer da pagine locali a link Iubenda modali con classi `iubenda-white iubenda-noiframe iubenda-embed`
+- Aggiunto il loader `iubenda.js` prima di `</body>` di tutte e 4 le pagine per abilitare il comportamento "click → popup modale"
+
+**Decisioni chiave:**
+- Un solo fornitore (Iubenda) per banner cookie + privacy controls + privacy policy + cookie policy: più semplice da gestire per Pietro
+- Niente pagine HTML dedicate: i link nel footer aprono direttamente un modal con il testo della policy, riducendo la superficie di codice da mantenere
+
 ## 2026-05-26 — P.IVA, Cookie Policy, Privacy Policy
 
 **Stato attuale:** `main`.
