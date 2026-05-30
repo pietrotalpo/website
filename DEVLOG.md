@@ -1,5 +1,20 @@
 # DEVLOG – Sito Pietro Talpo
 
+## 2026-05-30 — Aggiunta Iubenda Consent Solution
+
+**Stato attuale:** `main`.
+
+**Cosa è stato fatto:**
+- Aggiunto in `<head>` di tutte e 4 le pagine production il quarto componente Iubenda: la Consent Solution (`iubenda_cons.js`) con `api_key` `MicgN1lmg6pUmXxlgOO7xYD4bIpf789s`
+- Stessa modifica replicata sul `preview.html` per coerenza
+
+**A cosa serve:**
+- Registra la prova di consenso (proof of consent) per le submission dei form, conservando data, timestamp, IP e contenuto della privacy mostrata al momento del consenso. Necessario per la conformità GDPR sui dati raccolti via form.
+
+**Cosa manca per attivarla davvero:**
+- I form attuali (4 in totale: hero homepage, contatti, servizi, chi-sono) non hanno un checkbox di consenso alla privacy. Senza checkbox la Consent Solution non ha nulla da registrare.
+- Per attivarla bisogna: (a) aggiungere un checkbox "Acconsento al trattamento dei dati come da Privacy Policy" obbligatorio in ogni form, (b) bindare il form a Iubenda con l'API JS (`_iub.cons_instructions.push(["submit", ...])`) o con gli attributi `data-iub-form`.
+
 ## 2026-05-30 — Sostituito Cookiebot+Usercentrics con Iubenda
 
 **Stato attuale:** `main`.
